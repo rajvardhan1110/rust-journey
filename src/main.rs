@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     // println!("Hello, world!");
 
@@ -105,6 +107,46 @@ fn main() {
     }
 
 
+    //collection
+
+    //vector
+
+    let mut v = vec![1,2,3,4,5];
+
+    println!("Original vector: {:?}", v);
+
+    println!("\nImmutable iteration:");
+    for val in &v {
+        println!("{}", val);
+    }
+
+    for val in &mut v {
+        *val *= 2;  // double each element
+    }
+
+    println!("After mutable iteration vector: {:?}", v);
+
+                // Push and Pop
+    v.push(100);
+    println!("\nAfter push: {:?}", v);
+
+    v.pop();
+    println!("After pop: {:?}", v);
+            
+            //particular index
+    match v.get(1) {
+        Some(val) => println!("{}", val),
+        None => println!("Index out of bounds"),
+    }
+
+    //Hashmap
+        //import required -> use std::collections::HashMap;
+    let mut map = HashMap::new();
+
+    map.insert("apple", 10);
+    map.insert("banana", 20);
+
+    println!("{:?}", map);
 
     
 
