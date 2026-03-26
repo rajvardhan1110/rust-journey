@@ -54,17 +54,37 @@ fn main() {
 
 
     //functions
-
     let result = add(5, 3);
     println!("5 + 3 = {}", result);
 
-    //struct & impl
 
+    //struct & impl
     let p = Person { name: String::from("Raj") };
     p.greet();
+    
+
+    //enum
+    move_player(Direction::Up);
+    move_player(Direction::Left);
 
     
 
+}
+
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+
+fn move_player(dir: Direction) {
+    match dir {
+        Direction::Up => println!("Move up"),
+        Direction::Down => println!("Move down"),
+        Direction::Left => println!("Move left"),
+        Direction::Right => println!("Move right"),
+    }
 }
 
 struct Person {
