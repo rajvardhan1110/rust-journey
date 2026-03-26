@@ -87,9 +87,36 @@ fn main() {
         Err(e) => println!("Error: {}", e),
     }
 
+    //Option enum
+    // enum Option<T> {
+    // Some(T),  // value exists
+    // None,     // no value
+
+    let numbers = [10, 20, 30];
+    
+    match find_number(&numbers, 20) {
+        Some(index) => println!("Found at index {}", index),
+        None => println!("Not found"),
+    }
+    
+    match find_number(&numbers, 50) {
+        Some(index) => println!("Found at index {}", index),
+        None => println!("Not found"),
+    }
+
+
 
     
 
+}
+
+fn find_number(arr: &[i32], target: i32) -> Option<usize> {
+    for (i, &num) in arr.iter().enumerate() {
+        if num == target {
+            return Some(i); // found
+        }
+    }
+    None // not found
 }
 
 fn divide(a: i32, b: i32) -> Result<i32, String> {
