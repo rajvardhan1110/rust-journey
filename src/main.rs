@@ -61,14 +61,43 @@ fn main() {
     //struct & impl
     let p = Person { name: String::from("Raj") };
     p.greet();
-    
+
 
     //enum
     move_player(Direction::Up);
     move_player(Direction::Left);
 
+    // error handling using Result enum
+
+    // enum Result<T, E> {
+    // Ok(T),
+    // Err(E),
+
+    let result = divide(10, 2);
+    
+    match result {
+        Ok(value) => println!("Result: {}", value),
+        Err(e) => println!("Error: {}", e),
+    }
+    
+    let result2 = divide(10, 0);
+    
+    match result2 {
+        Ok(value) => println!("Result: {}", value),
+        Err(e) => println!("Error: {}", e),
+    }
+
+
     
 
+}
+
+fn divide(a: i32, b: i32) -> Result<i32, String> {
+    if b == 0 {
+        Err(String::from("Cannot divide by zero"))
+    } else {
+        Ok(a / b)
+    }
 }
 
 enum Direction {
