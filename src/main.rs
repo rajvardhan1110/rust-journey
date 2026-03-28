@@ -148,6 +148,55 @@ fn main() {
 
     println!("{:?}", map);
 
+
+
+    //iterator
+
+
+    // iter()
+    // Note: Read-only iterator (borrows &T, cannot modify, vector stays usable)
+    let v1 = vec![1, 2, 3];
+    for x in v1.iter() {
+        println!("iter: {}", x);
+    }
+    println!("v1 still usable: {:?}", v1);
+
+
+    // iter_mut()
+    // Note: Mutable iterator (borrows &mut T, can modify, vector stays usable)
+    let mut v2 = vec![1, 2, 3];
+    for x in v2.iter_mut() {
+        *x += 10;
+    }
+    println!("iter_mut modified v2: {:?}", v2);
+
+
+    // into_iter()
+    // Note: Ownership iterator (moves values, vector becomes unusable)
+    let v3 = vec![1, 2, 3];
+    for x in v3.into_iter() {
+        println!("into_iter: {}", x);
+    }
+    // println!("{:?}", v3); // ❌ ERROR (v3 moved)
+
+
+    // Consumer Adapter
+    // Note: Consumes iterator and gives final result (vector safe if using iter())
+    let v4 = vec![1, 2, 3];
+    let sum: i32 = v4.iter().sum();
+    println!("sum: {}", sum);
+    println!("v4 still usable: {:?}", v4);
+
+
+    // Iterator Adapter
+    // Note: Lazy transformation (runs only when consumer like collect() is used)
+    let v5 = vec![1, 2, 3, 4];
+    let res: Vec<i32> = v5.iter()
+        .map(|x| x * 2)      // adapter
+        .filter(|x| x > &4)  // adapter
+        .collect();          // consumer
+    println!("result: {:?}", res);
+
     
 
 }
