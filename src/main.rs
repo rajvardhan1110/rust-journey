@@ -197,7 +197,12 @@ fn main() {
         .collect();          // consumer
     println!("result: {:?}", res);
 
-    
+    //string and slice
+    //Slice from String
+    // Note: &str can point inside String
+    let s3 = String::from("hello world");
+    let slice:&str = &s3[0..5];
+    println!("slice: {}", slice);
 
 }
 
